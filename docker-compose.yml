@@ -1,0 +1,8 @@
+dashing:
+    build: .
+    ports:
+        - 3030:3030
+    volumes:
+        - ./:/dashboard
+    env_file:
+        - ./environment-sample.env
