@@ -7,4 +7,8 @@ class Dashing.Slack extends Dashing.Widget
       $(@node).find('ul').remove()
 
   onData: (data) ->
-    $(@node).find('.more-info').text( $(@node).find('li .value').text() + "/" + $(@node).find('li').length + " Users Online" )
+    usersOnline = 0;
+    for item in data.items
+      if item.value == "active"
+        usersOnline++
+    $(@node).find('.more-info').text( usersOnline + "/" + $(@node).find('li').length + " Users Online" )
