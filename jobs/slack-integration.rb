@@ -1,9 +1,7 @@
 require 'net/http'
 require 'json'
 
-# password = File.read('apipassword.txt')
-
-uri = URI("https://slack.com/api/users.list?token=" + File.read('apipassword.txt') + "&presence=1")
+uri = URI("https://slack.com/api/users.list?token=" + ENV["SLACKAPIKEY"] + "&presence=1")
 
 SCHEDULER.every '5s' do
   Net::HTTP.get(uri)
