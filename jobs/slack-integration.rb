@@ -12,7 +12,11 @@ SCHEDULER.every '5s' do
 
   slack['members'].each{ |mem|
     if "#{mem['is_restricted']}" == "false" && "#{mem['is_bot']}" != "true" && "#{mem['id']}" != "USLACKBOT"
-      users["#{mem['id']}"] = { label: "#{mem['name']}", value: "#{mem['presence']}" }
+      if "#{mem['presence']}" == "active"
+        users["#{mem['id']}"] = { label: "#{mem['name']}", active: "●" }
+      else
+        users["#{mem['id']}"] = { label: "#{mem['name']}", inactive: "●" }
+      end
     end
   }
 

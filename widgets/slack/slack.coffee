@@ -9,6 +9,6 @@ class Dashing.Slack extends Dashing.Widget
   onData: (data) ->
     usersOnline = 0;
     for item in data.items
-      if item.value == "active"
+      if item.active != undefined
         usersOnline++
     $(@node).find('.more-info').text( usersOnline + "/" + $(@node).find('li').length + " Users Online" )
