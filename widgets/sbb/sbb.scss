@@ -1,0 +1,82 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:      #FFFFFF;
+$items-color:           #000000;
+
+$title-color:           #E42322;
+$middlePart-color:      #E4E4E4;
+
+// ----------------------------------------------------------------------------
+// Widget-list styles
+// ----------------------------------------------------------------------------
+
+.background-box{
+  position: absolute;
+  background-color: $middlePart-color;
+  width: 50%;
+  left: 25%;
+  top: 0px;
+  height: 100%;
+}
+
+.widget-sbb {
+
+  background-color: $background-color;
+  vertical-align: top;
+
+  .title {
+    position: static;
+    color: $title-color;
+  }
+
+  ol, ul {
+    margin: 0 15px;
+    text-align: center;
+    color: $items-color;
+    display: inline;
+  }
+
+  ol {
+    list-style-position: inside;
+  }
+
+  li {
+    margin-bottom: 5px;
+  }
+
+  .sbb-nostyle {
+    list-style: none;
+  }
+
+  .from {
+    position: relative;
+    float: left;
+    left: 5%;
+  }
+
+  .to{
+    position: relative;
+    float: right;
+    right: 5%;
+  }
+
+  .middlePart{
+    width: 50%;
+    height: 32px;
+    left: 25%;
+    position: absolute;
+    text-align: center;
+
+    .products{
+      float: left;
+      width: 33%;
+    }
+
+    .travelTime{
+      float: right;
+      width: 33%;
+    }
+  }
+
+}

@@ -1,0 +1,15 @@
+<!-- <box class="background-box"></box> -->
+
+<h1 class="title" data-bind="title"></h1>
+
+<ul class="sbb-nostyle">
+  <li data-foreach-item="items" style="overflow-y: auto;">
+    <span class="from" data-bind="item.from"></span>
+    <span class="middlePart">
+        <span class="products" data-bind="item.products"></span>
+        <span class="changes" data-bind="item.changes"></span>
+        <span class="travelTime" data-bind="item.travelTime"></span>
+    </span>
+    <span class="to" data-bind="item.to"></span>
+  </li>
+</ul>
