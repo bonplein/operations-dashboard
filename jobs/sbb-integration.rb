@@ -1,24 +1,48 @@
 require 'net/http'
 require 'json'
 
-uri = URI("https://slack.com/api/users.list?token=" + ENV["SLACKAPIKEY"] + "&presence=1")
+uri = URI("http://transport.opendata.ch/v1/connections?from=zurich&to=konstanz")
 
 SCHEDULER.every '5s' do
+  result = Hash.new
+  result[1] = getData(uri)
+
+  send_event('sbb-integration', { items: result[1].values })
+end
+
+
+def getData(uri)
   Net::HTTP.get(uri)
   res = Net::HTTP.get_response(uri)
-  slack = JSON.parse(res.body)
+  sbb = JSON.parse(res.body)
 
-  users = Hash.new
+  connection = Hash.new
 
-  slack['members'].each{ |mem|
-    if "#{mem['is_restricted']}" == "false" && "#{mem['is_bot']}" != "true" && "#{mem['id']}" != "USLACKBOT"
-      if "#{mem['presence']}" == "active"
-        users["#{mem['id']}"] = { label: "#{mem['name']}", active: "●" }
+  id = 0
+
+  sbb['connections'].each {|con|
+    products = Array.new
+    con['products'].each{|prod|
+      products.push("#{prod}")
+    }
+
+    puts "#{products}"
+
+    secNo = 0
+    con['sections'].each{|sec|
+      if secNo == 0
+        puts "#{sec.length}"
       else
-        users["#{mem['id']}"] = { label: "#{mem['name']}", inactive: "●" }
+        puts "#{sec.length}"
       end
-    end
+      secNo += 1
+    }
+
+    connection[id] = { from: "#{con['from']['location']['name']}", to:"#{con['to']['location']['name']}", travelTime: "#{con['duration']}", changes: "#{products.length - 1}", products: products }
+    id += 1
   }
 
-  send_event('slack-integration', { items: users.values })
+  puts "#{connection}"
+  return connection
+
 end

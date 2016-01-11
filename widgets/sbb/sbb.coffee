@@ -1,4 +1,4 @@
-class Dashing.Slack extends Dashing.Widget
+class Dashing.Sbb extends Dashing.Widget
 
   ready: ->
     if @get('unordered')
@@ -6,9 +6,9 @@ class Dashing.Slack extends Dashing.Widget
     else
       $(@node).find('ul').remove()
 
-  onData: (data) ->
-    usersOnline = 0;
-    for item in data.items
-      if item.active != undefined
-        usersOnline++
-    $(@node).find('.more-info').text( usersOnline + "/" + $(@node).find('li').length + " Users Online" )
+  # onData: (data) ->
+    # usersOnline = 0;
+    # for item in data.items
+    #   if item.active != undefined
+    #     usersOnline++
+    # $(@node).find('.more-info').text( usersOnline + "/" + $(@node).find('li').length + " Users Online" )
