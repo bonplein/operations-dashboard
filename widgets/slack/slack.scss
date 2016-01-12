@@ -4,13 +4,14 @@
 $background-color:      #2F2C2F;
 $value-active-color:    #ADBA4E;
 $value-inactive-color:  #60626F;
+$updated-color:         #DB6668;
 
 $title-color:       rgba(255, 255, 255, 0.7);
 $label-color:       rgba(255, 255, 255, 0.7);
 $moreinfo-color:    rgba(255, 255, 255, 0.7);
 
 // ----------------------------------------------------------------------------
-// Widget-list styles
+// Widget-slack styles
 // ----------------------------------------------------------------------------
 .widget-slack {
 
@@ -58,7 +59,7 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
   }
 
   .updated-at {
-    color: #DB6668;
+    color: $updated-color;
   }
 
   .more-info {
