@@ -3,7 +3,7 @@ require 'json'
 
 uri = URI("https://slack.com/api/users.list?token=" + ENV["SLACKAPIKEY"] + "&presence=1")
 
-SCHEDULER.every '5s' do
+SCHEDULER.every '90s' do
   Net::HTTP.get(uri)
   res = Net::HTTP.get_response(uri)
   slack = JSON.parse(res.body)
