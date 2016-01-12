@@ -1,25 +1,25 @@
 class Dashing.Git extends Dashing.Widget
 
-  counterG = 0
+  dataG = null
 
   ready: ->
-    if @get('unordered')
-      $(@node).find('ol').remove()
-    else
-      $(@node).find('ul').remove()
+    this.fillMilestones()
+    null
+
 
   onData: (data) ->
-    console.log(data)
-    setTimeout (timedjQuery data), 500000000
-    counter = 0
-    $(@node).find(".milestone").text("asdasdasd")
-    $(data.repos).each (repo) ->
-      $(this.milestones).each (miles) ->
-        mile = $(@node).find(".milestone")[counter]
-        $(@node).find(".milestone").css("color", "blue")
-        console.log(this)
-      counter += 1
-    $(@node).find(".milestone")
+    dataG = data
+    this.fillMilestones()
+    null
 
-  timedjQuery = (data) ->
-    console.log("hehe im late", data)
+  fillMilestones: ->
+    if $(@node).find("div").length != 0
+      counter = 0
+      $(dataG.repos).each ->
+        milestoneContent = ""
+        $(this.milestones).each (miles) ->
+          milestoneContent += "<p><span style='float:left;'>" + this.title + "</span><span style='float: right; padding-right: 0px;'>" + this.open + "</span><span style='float: right; padding-right: 12px;'>" + this.closed + "</span></p>"
+        $(".widget-git").find(".milestone")[counter].innerHTML = milestoneContent
+        counter += 1
+        null
+    null

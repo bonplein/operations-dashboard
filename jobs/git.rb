@@ -16,6 +16,9 @@ SCHEDULER.every '30s', :first_in => 0 do
     repos["#{repo['id']}"] = { "name"=> "#{repo['name']}", "repoURI" => "https://api.github.com/repos/#{repo['full_name']}/milestones?access_token=" + ENV['GIT_AUTH_TOKEN'], "repoId" => "#{repo['id']}"}
   }
 
+  openIssues = 0
+  closedIssues = 0
+
   repos.values.each{ |repo|
     milestones = Hash.new
     noMilestones = true
@@ -25,6 +28,8 @@ SCHEDULER.every '30s', :first_in => 0 do
     repository = JSON.parse(repoRes.body)
 
     repository.each{ |milestone|
+      openIssues += Integer("#{milestone['open_issues']}")
+      closedIssues += Integer("#{milestone['closed_issues']}")
       milestones["#{milestone['id']}"] = { title: "#{milestone['title']}", open: "#{milestone['open_issues']}", closed:"#{milestone['closed_issues']}"}
       noMilestones = false
     }
@@ -36,5 +41,7 @@ SCHEDULER.every '30s', :first_in => 0 do
 
   puts sendToWidget
 
-  send_event('git', { overall: "10", repos: sendToWidget.values})
+  overall = "Overall progress: #{closedIssues} / " + String(Integer("#{openIssues}") + Integer("#{closedIssues}")) + " Issues done!"
+
+  send_event('git', { overall: overall, repos: sendToWidget.values})
 end

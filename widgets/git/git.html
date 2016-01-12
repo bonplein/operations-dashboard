@@ -1,10 +1,15 @@
 <h1 class="title" data-bind="title"></h1>
 
 <ul class="git-nostyle">
-  <li data-foreach-repo="repos">
-    <span class="repo-title" data-bind="repo.title"></span>
-    <div class="milestone"></div>
-  </li>
+  <div class="repository">
+    <li data-foreach-repo="repos">
+      <div>
+        <div style="float: left;" class="repo-title" data-bind="repo.title"></div>
+        <div style="float: right;">✓&nbsp&nbspx</div>
+      </div>
+      <div class="milestone"></div>
+    </li>
+  </div>
 </ul>
 
 <p class="overall-progress" data-bind="overall"></p>
