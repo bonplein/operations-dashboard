@@ -3,6 +3,7 @@ class Dashing.Git extends Dashing.Widget
   dataG = null
 
   ready: ->
+    $("head").append("<link rel='stylesheet' href='/assets/octicons/octicons.css'>")
     this.fillMilestones()
     null
 
@@ -13,13 +14,13 @@ class Dashing.Git extends Dashing.Widget
     null
 
   fillMilestones: ->
-    if $(@node).find("div").length != 0
+    if $(@node).find("div").length != 0 && dataG != null
       counter = 0
       $(dataG.repos).each ->
         milestoneContent = ""
         $(this.milestones).each (miles) ->
-          milestoneContent += "<p><span style='float:left; min-width: 51%;'>" + this.title + "</span><span style='float: right; padding-right: 0px;'>" + this.open + "</span><span style='float: right; padding-right: 12px;'>" + this.closed + "</span></p>"
-        $(".widget-git").find(".milestone")[counter].innerHTML = milestoneContent
+          milestoneContent += "<div class='milestone'><span class='milestoneName'>" + this.title + "</span><span class='milestoneOpen'>" + this.open + "</span><span class='milestoneClosed'>" + this.closed + "</span></div>"
+        $(".widget-git").find(".milestones")[counter].innerHTML = milestoneContent
         counter += 1
         null
     null

@@ -1,15 +1,15 @@
-<h1 class="title" data-bind="title"></h1>
+<h1 class="title mega-octicon octicon-logo-github">&nbspStatus</h1>
 
 <ul class="git-nostyle">
-  <div style="float: right;">✓&nbsp&nbspx</div>
+  <div class="header"><span class="repositoriesHeader">Repositories</span><span class="done">x</span></div>
   <div class="repository">
     <li data-foreach-repo="repos">
-      <div>
-        <div style="float: left;" class="repo-title" data-bind="repo.title"></div>
-        <div style="float: right;" data-bind="repo.openIssues"></div>
-        <div style="float: right; padding-right: 12px;" data-bind="repo.closedIssues"></div>
+      <div class="repo">
+        <div class="repo-title" data-bind="repo.title"></div>
+        <div class="repoOpen" data-bind="repo.openIssues"></div>
+        <div class="repoClosed" data-bind="repo.closedIssues"></div>
       </div>
-      <div class="milestone"></div>
+      <div class="milestones"></div>
     </li>
   </div>
 </ul>
