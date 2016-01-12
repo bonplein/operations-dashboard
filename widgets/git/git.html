@@ -1,11 +1,13 @@
 <h1 class="title" data-bind="title"></h1>
 
 <ul class="git-nostyle">
+  <div style="float: right;">✓&nbsp&nbspx</div>
   <div class="repository">
     <li data-foreach-repo="repos">
       <div>
         <div style="float: left;" class="repo-title" data-bind="repo.title"></div>
-        <div style="float: right;">✓&nbsp&nbspx</div>
+        <div style="float: right;" data-bind="repo.openIssues"></div>
+        <div style="float: right; padding-right: 12px;" data-bind="repo.closedIssues"></div>
       </div>
       <div class="milestone"></div>
     </li>

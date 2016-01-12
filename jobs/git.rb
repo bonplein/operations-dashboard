@@ -20,6 +20,8 @@ SCHEDULER.every '30s', :first_in => 0 do
   closedIssues = 0
 
   repos.values.each{ |repo|
+    openIssuesRepo = 0
+    closedIssuesRepo = 0
     milestones = Hash.new
     noMilestones = true
     repoURI = URI("#{repo['repoURI']}")
@@ -30,11 +32,13 @@ SCHEDULER.every '30s', :first_in => 0 do
     repository.each{ |milestone|
       openIssues += Integer("#{milestone['open_issues']}")
       closedIssues += Integer("#{milestone['closed_issues']}")
+      openIssuesRepo += Integer("#{milestone['open_issues']}")
+      closedIssuesRepo += Integer("#{milestone['closed_issues']}")
       milestones["#{milestone['id']}"] = { title: "#{milestone['title']}", open: "#{milestone['open_issues']}", closed:"#{milestone['closed_issues']}"}
       noMilestones = false
     }
     if !noMilestones
-      sendToWidget["#{repo['repoId']}"] = { title: "#{repo['name']}", milestones: milestones.values }
+      sendToWidget["#{repo['repoId']}"] = { title: "#{repo['name']}", milestones: milestones.values, openIssues: openIssuesRepo, closedIssues: closedIssuesRepo }
     end
     # repos["#{repo['id']}"] = { milestones: milestones }
   }
