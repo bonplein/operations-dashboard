@@ -1,19 +1,24 @@
 require 'net/http'
 require 'json'
 
-uri = URI("https://api.github.com/user/repos?access_token=" + ENV["GIT_AUTH_TOKEN"])
-
 SCHEDULER.every '30s', :first_in => 0 do
-  Net::HTTP.get(uri)
-  res = Net::HTTP.get_response(uri)
-  repositories = JSON.parse(res.body)
-
-  if repositories.is_a? Array
-    sendData(repositories)
+  # check if our API-Key is present
+  if ENV["GIT_AUTH_TOKEN"] == nil
+    send_event('git', { errormsg: "No API-Key specified!" })
   else
-    # error from GitHub
-    puts "#{repositories['message']}\nSee: #{repositories['documentation_url']} for more Infos"
-    send_event('git', { errormsg: "#{repositories['message']}", errormsg2:"See: #{repositories['documentation_url']} for more Infos"})
+
+    uri = URI("https://api.github.com/user/repos?access_token=" + ENV["GIT_AUTH_TOKEN"])
+    Net::HTTP.get(uri)
+    res = Net::HTTP.get_response(uri)
+    repositories = JSON.parse(res.body)
+
+    if repositories.is_a? Array
+      sendData(repositories)
+    else
+      # error from GitHub
+      puts "#{repositories['message']}\nSee: #{repositories['documentation_url']} for more Infos"
+      send_event('git', { errormsg: "#{repositories['message']}", errormsg2:"See: #{repositories['documentation_url']} for more Infos"})
+    end
   end
 end
 
