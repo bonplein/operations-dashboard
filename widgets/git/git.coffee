@@ -19,7 +19,8 @@ class Dashing.Git extends Dashing.Widget
       $(dataG.repos).each ->
         milestoneContent = ""
         $(this.milestones).each (miles) ->
-          milestoneContent += "<div class='milestone'><span class='milestoneName'>" + this.title + "</span><span class='milestoneOpen'>" + this.open + "</span><span class='milestoneClosed'>" + this.closed + "</span></div>"
+          dueOn = new Date(Date.parse(this.due))
+          milestoneContent += "<div class='milestone'><span class='milestoneName'>" + this.title + "</span><span class='milestoneOpen'>" + this.open + "</span><span class='milestoneClosed'>" + this.closed + "</span><span class='milestoneDue'>" + dueOn.toLocaleDateString() + "</span></div>"
         $(".widget-git").find(".milestones")[counter].innerHTML = milestoneContent
         counter += 1
         null
