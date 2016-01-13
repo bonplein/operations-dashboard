@@ -1,7 +1,7 @@
 require 'net/http'
 require 'json'
 
-SCHEDULER.every '30s', :first_in => 0 do
+SCHEDULER.every '90s', :first_in => 0 do
   # check if our API-Key is present
   if ENV["GIT_AUTH_TOKEN"] == nil
     send_event('git', { errormsg: "No API-Key specified!" })
