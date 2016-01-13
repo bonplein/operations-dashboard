@@ -1,0 +1,20 @@
+<h1 class="title mega-octicon octicon-logo-github">&nbspStatus</h1>
+
+<ul class="git-nostyle">
+  <div class="header"><span class="repositoriesHeader">Repositories</span><span class="dueOn">Due On</span><span class="done"></span></div>
+  <div class="repository">
+    <li data-foreach-repo="repos">
+      <div class="repo">
+        <div class="repo-title" data-bind="repo.title"></div>
+        <div class="repoOpen" data-bind="repo.openIssues"></div>
+        <div class="repoClosed" data-bind="repo.closedIssues"></div>
+      </div>
+      <div class="milestones"></div>
+    </li>
+  </div>
+</ul>
+
+<div class="errormsg" data-bind="errormsg"></div>
+<div class="errormsg" data-bind="errormsg2"></div>
+
+<p class="overall-progress" data-bind="overall"></p>

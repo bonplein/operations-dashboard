@@ -1,0 +1,193 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:      #FFFFFF;
+
+$git-color:         #333;
+$open-issue:        #6CC644;
+$closed-issue:      #BD2C00;
+$overall-progress:  #333;
+
+$milestonePadding:  20px;
+$openRight:         40px;
+$milestoneHeight:   27px;
+$repoHeight:        30px;
+$milestoneText:     16.5px;
+$repoText:          20px;
+$gitFont:           normal normal normal 16px/1 octicons;
+
+// ----------------------------------------------------------------------------
+// Widget-git styles
+// ----------------------------------------------------------------------------
+
+.widget-git {
+  background-color: $background-color;
+  vertical-align: top;
+
+  .overall-progress{
+    color: $git-color;
+    padding-top: 20px;
+  }
+
+  .title {
+    color: $git-color;
+  }
+
+  ul {
+    margin: 0 15px;
+    text-align: left;
+    color: $git-color;
+  }
+
+  li {
+    margin-bottom: 15px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px 3px 0 0;
+    background-color: #f5f5f5;
+    padding: 10px 10px 0 10px;
+  }
+
+  .errormsg{
+    color: $closed-issue;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .milestones {
+    padding-left: $milestonePadding;
+
+    .milestone{
+      position: relative;
+      padding-left: 10px;
+      padding-top: 1.5px;
+      padding-bottom: 1.5px;
+      margin-left: -20px;
+      border-top: 1px solid #e5e5e5;
+      border-left: 1px solid #e5e5e5;
+      border-right: 1px solid #e5e5e5;
+      font-size: $milestoneText;
+      height: $milestoneHeight;
+
+      &:first-child{
+        border-radius: 3px 3px 0 0;
+      }
+
+      &:last-child{
+        border-bottom: 1px solid #e5e5e5;
+        margin-bottom: 10px;
+      }
+
+      &:before{
+        float: left;
+        margin-right: 5px;
+        margin-top: 6px;
+        font: $gitFont;
+        color: #ccc;
+        content: '\f075';
+      }
+
+      .milestoneName{
+        font-weight: 550;
+        float: left;
+        min-width: 51%;
+      }
+
+      .milestoneDue{
+        color: $git-color;
+      }
+
+      .milestoneOpen{
+        float: right;
+        padding-right: 5px;
+      }
+
+      .milestoneClosed{
+        position: absolute;
+        right: $openRight;
+        text-align: center;
+      }
+    }
+  }
+
+  .label {
+    color: $git-color;
+  }
+
+  .repository{
+    display: inline-block;
+    width: 100%;
+
+    .repo{
+      position: relative;
+      height: $repoHeight;
+      font-size: $repoText;
+      padding-bottom: 3px;
+
+      &:before{
+        float: left;
+        margin-top: 6px;
+        margin-right: 5px;
+        font: $gitFont;
+        color: #D9D9D9;
+        content: '\f001';
+      }
+
+      .repo-title{
+        font-weight: 800;
+        min-width: 51%;
+        float: left;
+      }
+
+      .repoOpen{
+        float: right;
+        padding-right: 5px;
+      }
+
+      .repoClosed{
+        position: absolute;
+        right: $openRight + 1px;
+        // text-align: center;
+      }
+    }
+  }
+
+  .header{
+    display: inline;
+    padding-left: 10px;
+
+    .dueOn{
+      position: absolute;
+      left: calc(51% + 20px);
+      color: $git-color;
+
+      &:before{
+        position: absolute;
+        margin-top: 5px;
+        left: -20px;
+        font: $gitFont;
+        color: #ccc;
+        content: '\f068';
+      }
+    }
+
+    .done{
+      float: right;
+      padding-right: 15px;
+      font: $gitFont;
+      color: $closed-issue;
+      content: '\f026';
+
+      &:before{
+        margin-right: $openRight - 18px;
+        color: $open-issue;
+        content: '\f028';
+      }
+    }
+
+    .repositoriesHeader{
+      float: left;
+      padding-bottom: 5px;
+    }
+  }
+
+}
