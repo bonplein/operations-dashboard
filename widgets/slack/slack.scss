@@ -58,6 +58,11 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
     color: $value-inactive-color;
   }
 
+  .error{
+    color: red;
+    font-weight: 600;
+  }
+
   .updated-at {
     color: $updated-color;
   }
