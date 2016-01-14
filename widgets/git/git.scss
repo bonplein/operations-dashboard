@@ -146,14 +146,19 @@ $gitFont:           normal normal normal 16px/1 octicons;
       .repoClosed{
         position: absolute;
         right: $openRight + 1px;
-        // text-align: center;
       }
     }
   }
 
   .header{
-    display: inline;
+    position: relative;
     padding-left: 10px;
+
+    .repositoriesHeader{
+      float: left;
+      min-width: 51%;
+      padding-bottom: 5px;
+    }
 
     .dueOn{
       position: absolute;
@@ -182,11 +187,6 @@ $gitFont:           normal normal normal 16px/1 octicons;
         color: $open-issue;
         content: '\f028';
       }
-    }
-
-    .repositoriesHeader{
-      float: left;
-      padding-bottom: 5px;
     }
   }
 
