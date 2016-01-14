@@ -59,28 +59,29 @@ $gitFont:           normal normal normal 16px/1 octicons;
     .milestone{
       position: relative;
       padding-left: 10px;
-      padding-top: 1.5px;
+      padding-top: 5.5px;
       padding-bottom: 1.5px;
       margin-left: -20px;
-      border-top: 1px solid #e5e5e5;
-      border-left: 1px solid #e5e5e5;
-      border-right: 1px solid #e5e5e5;
+      border-top: 1px solid transparent;
+      border-bottom: 0px solid #f5f5f5;
+      border-image: linear-gradient(to right, rgba(245,245,245,0) 0%,rgba(245,245,245,1) 2%,rgba(245,245,245,1) 5%,rgba(229,229,229,1) 10%,rgba(229,229,229,1) 90%,rgba(245,245,245,1) 95%,rgba(245,245,245,1) 98%,rgba(245,245,245,0) 100%) 3% round;
       font-size: $milestoneText;
       height: $milestoneHeight;
 
       &:first-child{
         border-radius: 3px 3px 0 0;
+        margin-top: 1px;
       }
 
       &:last-child{
-        border-bottom: 1px solid #e5e5e5;
+        border-bottom: 1px solid transparent;
         margin-bottom: 10px;
       }
 
       &:before{
         float: left;
         margin-right: 5px;
-        margin-top: 6px;
+        margin-top: 2px;
         font: $gitFont;
         color: #ccc;
         content: '\f075';
