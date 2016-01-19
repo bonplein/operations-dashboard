@@ -1,11 +1,15 @@
 <% content_for :title do %>HoSu Dashboard v0.1<% end %>
 <div class="gridster">
   <ul>
-    <li data-row="1" data-col="1" data-sizex="2" data-sizey="2">
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="calendar" data-view="Calendar" data-unordered="true" data-title="GoogleCalendar" data-moreinfo="Upcoming events"></div>
+    </li>
+
+    <li data-row="4" data-col="1" data-sizex="2" data-sizey="2">
       <div data-id="git" data-view="Git" data-unordered="true" data-title="Git status"></div>
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="2">
+    <li data-row="4" data-col="3" data-sizex="1" data-sizey="2">
       <div data-id="slack-integration" data-view="Slack" data-unordered="true" data-title="Slack activity" data-moreinfo="Users online"></div>
     </li>
 
