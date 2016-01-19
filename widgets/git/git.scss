@@ -3,16 +3,19 @@
 // ----------------------------------------------------------------------------
 $background-color:      #FFFFFF;
 
-$git-color:         #333;
-$open-issue:        #6CC644;
-$closed-issue:      #BD2C00;
-$overall-progress:  #333;
+$git-color:             #333;
+$open-issue:            #6CC644;
+$closed-issue:          #BD2C00;
+$overall-progress:      #333;
+$milestoneProgressBarW: 120px;
+$milestoneProgressBar:  #ddd;
+$milestoneProgress:     #bbb;
 
 $milestonePadding:  20px;
-$openRight:         40px;
 $milestoneHeight:   27px;
-$repoHeight:        30px;
 $milestoneText:     16.5px;
+$openRight:         40px;
+$repoHeight:        30px;
 $repoText:          20px;
 $gitFont:           normal normal normal 16px/1 octicons;
 
@@ -94,6 +97,23 @@ $gitFont:           normal normal normal 16px/1 octicons;
 
       .milestoneDue{
         color: $git-color;
+      }
+
+      .milestoneProgressBar{
+        display: inline-block;
+        margin-left: 6.75%;
+        vertical-align: -11px;
+        width: $milestoneProgressBarW;
+        height: 5px;
+        border-radius: 3px;
+        background-color: $milestoneProgressBar;
+
+        .milestoneProgress{
+          display: block;
+          height: 5px;
+          border-radius: 3px;
+          background-color: $milestoneProgress;
+        }
       }
 
       .milestoneOpen{
