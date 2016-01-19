@@ -20,7 +20,9 @@ class Dashing.Git extends Dashing.Widget
         milestoneContent = ""
         $(this.milestones).each (miles) ->
           dueOn = new Date(Date.parse(this.due))
-          milestoneContent += "<div class='milestone'><span class='milestoneName'>" + this.title + "</span><span class='milestoneOpen'>" + this.open + "</span><span class='milestoneClosed'>" + this.closed + "</span><span class='milestoneDue'>" + dueOn.toLocaleDateString() + "</span></div>"
+          progress = "<span class='milestoneProgressBar'><span class='milestoneProgress' style='width: " + (parseFloat(this.closed) / ((parseFloat(this.open) + parseFloat(this.closed))) * 100) + "%'>&nbsp</span></span>"
+          console.log(progress)
+          milestoneContent += "<div class='milestone'><span class='milestoneName'>" + this.title + "</span><span class='milestoneOpen'>" + this.open + "</span><span class='milestoneClosed'>" + this.closed + "</span><span class='milestoneDue'>" + dueOn.toLocaleDateString() + "</span>" + progress + "</div>"
         $(".widget-git").find(".milestones")[counter].innerHTML = milestoneContent
         counter += 1
         null
